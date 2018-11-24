@@ -1,0 +1,39 @@
+page{
+background: #E8ECEF;
+}
+
+.hot-movie{
+  position: absolute;
+  top: 50rpx;
+}
+.movie-block{
+  background: whitesmoke;
+  position: relative;
+  width: 650rpx;
+  height: 292rpx;
+  margin-bottom: 40rpx;
+  margin-left: 55rpx;
+  box-shadow: 2rpx 2rpx 13rpx 5rpx rgba(154, 154, 154);
+}
+.movie-img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 220rpx;
+  height: 292rpx;
+}
+.movie-name{
+  position: absolute;
+  left: 250rpx;
+  top: 75rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.movie-class{
+  position: absolute;
+  left: 250rpx;
+  bottom: 75rpx;
+  font-size: 30rpx;
+}
