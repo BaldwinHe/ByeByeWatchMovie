@@ -1,1 +1,89 @@
 /* pages/users/users.wxss */
+page{
+background: #E8ECEF;
+}
+
+.my-love{
+  display: flex;
+  position: absolute;
+  align-items: center;
+  align-content: center;
+  height: 250rpx;
+  width: 750rpx;
+  font-size: 32rpx;
+  color: #AA56FF;
+}
+.my-love-text{
+  margin-left: 270rpx;
+}
+.my-love-img{
+  margin-left: 20rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.my-love-movie{
+  position: absolute;
+  top: 250rpx;
+}
+.movie-block{
+  background: whitesmoke;
+  position: relative;
+  width: 650rpx;
+  height: 292rpx;
+  margin-bottom: 40rpx;
+  margin-left: 55rpx;
+  box-shadow: 2rpx 2rpx 13rpx 5rpx rgba(154, 154, 154);
+}
+.movie-img{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 220rpx;
+  height: 292rpx;
+}
+.recommender{
+  position: absolute;
+  display: flex;
+  left: 250rpx;
+  bottom: 25rpx;
+  align-items: center;
+}
+.user-head{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.user-name{
+  font-size: 33rpx;
+  margin-left: 25rpx;
+  font-weight: bold;
+  opacity: 0.6;
+}
+.movie-name{
+  position: absolute;
+  left: 250rpx;
+  top: 25rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+  opacity: 0.8;
+}
+.connect-block{
+  position: fixed;
+  background: white;
+  padding-right: 300rpx;
+  bottom: 0;
+  height: 120rpx;
+  display: flex;
+  border-top: 4rpx solid rgba(151, 151, 151, 0.3);
+}
+.connect-item{
+  display: flex;
+  align-items: center;
+  margin-left: 310rpx;
+}
+.mini-text{
+  font-size: 36rpx;
+  font-weight: bold;
+  opacity: 0.5;
+}

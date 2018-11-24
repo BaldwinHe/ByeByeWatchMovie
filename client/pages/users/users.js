@@ -5,14 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    movie : [
+      { 
+        img: '/images/movie-img.png',
+        name: '复仇者联盟3：无限战争'
+      },
+      {
+        img: '/images/movie-img.png',
+        name: '复仇者联盟3：无限战争'
+      }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(this.data.movie)
   },
 
   /**

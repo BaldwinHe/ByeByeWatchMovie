@@ -1,2 +1,21 @@
 <!--pages/users/users.wxml-->
-<text>pages/users/users.wxml</text>
+<view class='my-love'>
+  <text class='my-love-text'>俺收藏的影评</text>
+  <image class='my-love-img' src='/images/download.png'></image>
+</view>
+
+<view class='my-love-movie'>
+  <view class='movie-block' wx:for="{{movie}}">
+    <image class='movie-img' src='{{item.img}}'></image>
+    <view class='movie-name'>{{item.name}}</view>
+    <view class='recommender'>
+      <image class='user-head' src='/images/head-img.png'></image>
+      <view class='user-name'>柏柏</view>
+    </view>
+  </view>
+</view>
+<view class='connect-block'>
+  <view class='connect-item'>
+    <text class='mini-text'>回到首页</text>
+  </view>
+</view>
