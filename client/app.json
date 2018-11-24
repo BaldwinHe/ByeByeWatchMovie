@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/first/first",
+    "pages/users/users",
+    "pages/movie-detail/movie-detail",
+    "pages/preview-comment/preview-comment",
+    "pages/list-comment/list-comment",
+    "pages/comment-detail/comment-detail",
+    "pages/edit-comment/edit-comment"
+  ],
+  "window":{
+    "backgroundColor":"#F6F6F6",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "Wafer Quick Start",
+    "navigationBarTextStyle":"black"
+  }
+}

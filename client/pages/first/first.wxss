@@ -1,0 +1,75 @@
+/* pages/first/first.wxss */
+
+page{
+background: #E8ECEF;
+}
+
+.movie-block{
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.movie-img{
+  position: absolute;
+  width: 550rpx;
+  height: 729rpx;
+  margin-top: 30rpx;
+}
+.movie-name {
+  position: absolute;
+  align-self: center;
+  top: 769rpx;
+  margin-top: 10rpx;
+  font-size: 40rpx;
+  line-height: 56rpx;
+  font-weight: bold;
+  opacity: 0.6;
+}
+
+.user-recommend{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 850rpx;
+}
+
+.user-head-image{
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 50%;
+}
+
+.user-word{
+  margin-left: 20rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.connect-block{
+  position: absolute;
+  background: white;
+  padding-right: 136rpx;
+  bottom: 0;
+  height: 140rpx;
+  display: flex;
+  border-top: 4rpx solid rgba(151, 151, 151, 0.3);
+}
+
+.connect-item{
+  display: flex;
+  align-items: center;
+  margin-left: 160rpx;
+}
+.mini-img{
+  height: 60rpx;
+  width: 60rpx;
+  font-weight: bold;
+  opacity: 0.7;
+}
+.mini-text{
+  font-size: 36rpx;
+  margin-left: 20rpx;
+  font-weight: bold;
+  opacity: 0.5;
+}
