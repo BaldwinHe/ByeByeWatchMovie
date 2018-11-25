@@ -1,1 +1,131 @@
 /* pages/comment-detail/comment-detail.wxss */
+page{
+background: #E8ECEF;
+}
+
+.movie-img{
+  position: absolute;
+  width: 270rpx;
+  height: 358rpx;
+  top: 40rpx;
+  left: 240rpx;
+}
+
+.movie-detail-block{
+  z-index: -1;
+  position: relative;
+  width: 670rpx;
+  height: 1060rpx;
+  background: white;
+  border-width: 3rpx 3rpx 3rpx 3rpx;
+  border-color: whitesmoke;
+  border-style: solid;
+  margin-left: 40rpx;
+  margin-top:80rpx; 
+  border-radius: 15rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-name{
+  position: absolute;
+  font-size: 40rpx;
+  line-height: 56rpx;
+  font-weight: bold;
+  opacity: 0.9;
+  top: 330rpx;
+}
+
+.movie-detail{
+  position: absolute;
+  width: 450rpx;
+  height: 700rpx;
+  font-weight: bold;
+  opacity: 0.7;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  top: 410rpx;
+}
+.user-comment{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 395rpx;
+  left: 60rpx;
+}
+.user-head-image{
+  height: 110rpx;
+  width: 110rpx;
+  border-radius: 50%;
+  border-width: 3rpx 3rpx 3rpx 3rpx;
+  border-color: whitesmoke;
+  border-style: solid;
+}
+
+.user-word{
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  opacity: 0.7;
+}
+
+.right-arrow{
+  position: absolute;
+  top: 520rpx;
+  width: 50rpx;
+  height: 50rpx;
+  left: 112rpx;
+  opacity: 0.6;
+}
+.scroll-block{
+  position: absolute;
+  font-size: 26rpx;
+  opacity: 0.7;
+  height: 320rpx;
+  width: 400rpx;
+  top: 520rpx;
+  left: 180rpx;
+}
+.comment-word{
+}
+.collect-comment{
+  position: absolute;
+  bottom: 30rpx;
+  width: 240rpx;
+  align-items: center;
+  height: 80rpx;
+  display: flex;
+  border-width: 3rpx 3rpx 3rpx 3rpx;
+  justify-content: center;
+  border-color: #B2B2B2;
+  border-style: solid;
+  border-radius: 20rpx;
+  left: 50rpx;
+}
+.write-comment{
+  position: absolute;
+  bottom: 30rpx;
+  width: 240rpx;
+  align-items: center;
+  height: 80rpx;
+  display: flex;
+  border-width: 3rpx 3rpx 3rpx 3rpx;
+  justify-content: center;
+  border-color: #B2B2B2;
+  border-style: solid;
+  border-radius: 20rpx;
+  right: 50rpx;
+}
+.connect-img{
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.connect-word{
+  margin-left: 15rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  opacity: 0.5;
+}
+

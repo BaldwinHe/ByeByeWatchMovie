@@ -1,2 +1,27 @@
-<!--pages/comment-detail/comment-detail.wxml-->
-<text>pages/comment-detail/comment-detail.wxml</text>
+<!--pages/movie-detail/movie-detail.wxml-->
+<image class='movie-img' src="{{movie.img}}"></image>
+<view class='movie-detail-block'>
+  <view class='movie-name'>{{movie.name}}</view>
+
+  <view class='user-comment'>
+    <image class='user-head-image' src='{{userheadimg}}'></image>
+    <view class='user-word'>{{username}}的影评</view>
+  </view>
+
+  <image class='right-arrow' src='/images/finger-of-a-hand-pointing-to-right-direction.png'></image>
+
+  <scroll-view scroll-y='{{true}}' class = "scroll-block">
+    <view class='comment-word'>{{commentword}}</view>
+  </scroll-view>   
+
+  <view class='write-comment'>
+    <image class='connect-img' src='/images/scroll.png'></image>
+    <view class='connect-word'>写影评</view>
+  </view>
+
+  <view class='collect-comment'>
+    <image class='connect-img' src='/images/fireworks.png'></image>
+    <view class='connect-word'>收藏影评</view>
+  </view>
+
+</view>

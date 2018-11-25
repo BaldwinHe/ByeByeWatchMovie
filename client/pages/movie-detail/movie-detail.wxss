@@ -14,11 +14,11 @@ background: #E8ECEF;
 .movie-detail-block{
   z-index: -1;
   position: relative;
-  width: 630rpx;
+  width: 630rpx; 
   height: 1030rpx;
   background: white;
   border-width: 3rpx 3rpx 3rpx 3rpx;
-  border-color: whitesmoke;
+  border-color: whitesmoke; 
   border-style: solid;
   margin-left: 60rpx;
   margin-top:80rpx; 
