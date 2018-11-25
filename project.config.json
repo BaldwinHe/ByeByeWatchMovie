@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -40,7 +40,19 @@
 				{
 					"id": -1,
 					"name": "热门",
-					"pathName": "pages/hot-movie/hot-movie"
+					"pathName": "pages/hot-movie/hot-movie",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "电影详情",
+					"pathName": "pages/movie-detail/movie-detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "影评详情",
+					"pathName": "pages/comment-detail/comment-detail"
 				}
 			]
 		}

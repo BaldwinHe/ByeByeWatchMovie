@@ -1,2 +1,17 @@
 <!--pages/movie-detail/movie-detail.wxml-->
-<text>pages/movie-detail/movie-detail.wxml</text>
+<image class='movie-img' src="{{movie.img}}"></image>
+<view class='movie-detail-block'>
+  <view class='movie-name'>{{movie.name}}</view>
+  <view class='movie-detail'>{{movie.detail}}</view>
+
+  <view class='check-comment'>
+    <image class='comment-img' src='/images/find.png'></image>
+    <view class='comment-word'>查看影评</view>
+  </view>
+
+  <view class='add-comment'>
+    <image class='comment-img' src='/images/comment.png'></image>
+    <view class='comment-word'>添加影评</view>
+  </view>
+
+</view>
