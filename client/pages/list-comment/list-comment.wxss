@@ -1,1 +1,63 @@
 /* pages/list-comment/list-comment.wxss */
+page{
+background: #E8ECEF;
+}
+
+.the-movie-comment{
+  position: absolute;
+  top: 50rpx;
+}
+.comment-block{
+  background: white;
+  position: relative;
+  width: 750rpx;
+  height: 212rpx;
+  box-shadow: 2rpx 2rpx 13rpx 5rpx rgba(154, 154, 154);
+  border-bottom: 4rpx solid rgba(151, 151, 151, 0.3);
+}
+.about-user{
+  display: flex;
+  position: absolute;
+  align-items: center;
+  left:40rpx;
+  top:30rpx;
+}
+.user-commentdetail{
+  position: absolute;
+  left:70rpx;
+  bottom:40rpx;
+  font-size: 30rpx;
+}
+.user-head{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  border-width: 3rpx 3rpx 3rpx 3rpx;
+  border-color: whitesmoke;
+  border-style: solid;
+}
+.user-name{
+  font-size: 31rpx;
+  margin-left: 15rpx;
+  font-weight: bold;
+  opacity: 0.6;
+}
+.connect-block{
+  position: fixed;
+  background: white;
+  padding-right: 300rpx;
+  bottom: 0;
+  height: 120rpx;
+  display: flex;
+  border-top: 4rpx solid rgba(151, 151, 151, 0.3);
+}
+.connect-item{
+  display: flex;
+  align-items: center;
+  margin-left: 310rpx;
+}
+.mini-text{
+  font-size: 36rpx;
+  font-weight: bold;
+  opacity: 0.5;
+}
