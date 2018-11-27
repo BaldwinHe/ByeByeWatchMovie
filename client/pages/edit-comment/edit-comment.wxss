@@ -1,1 +1,110 @@
 /* pages/edit-comment/edit-comment.wxss */
+page{
+background: #E8ECEF;
+}
+
+.movie-img{
+  z-index: 1;
+  position: absolute;
+  width: 270rpx;
+  height: 358rpx;
+  top: 40rpx;
+  left: 240rpx;
+}
+
+.movie-detail-block{
+  position: relative;
+  width: 700rpx; 
+  height: 940rpx;
+  background: white;
+  border-width: 3rpx 3rpx 3rpx 3rpx;
+  border-color: whitesmoke; 
+  border-style: solid;
+  margin-left: 25rpx;
+  margin-top:80rpx; 
+  border-radius: 15rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-name{
+  position: absolute;
+  font-size: 40rpx;
+  line-height: 56rpx;
+  font-weight: bold;
+  opacity: 0.9;
+  top: 330rpx;
+}
+
+
+.connect-block{
+  position: fixed;
+  background: white;
+  padding-right: 300rpx;
+  bottom: 0;
+  height: 100rpx;
+  display: flex;
+  border-top: 4rpx solid rgba(151, 151, 151, 0.3);
+}
+.connect-item{
+  display: flex;
+  align-items: center;
+  margin-left: 310rpx;
+}
+.mini-text{
+  font-size: 36rpx;
+  font-weight: bold;
+  opacity: 0.5;
+}
+.havebtn{
+  background: #2BD12B;
+  position: fixed;
+  bottom: 0;
+  font-size: 35rpx;
+  width: 750rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  border-radius: 0;
+}
+
+.add-voice{
+  position: absolute;
+  bottom: 300rpx;
+  width: 240rpx;
+  align-items: center;
+  height: 80rpx;
+  display: flex;
+  border-width: 3rpx 3rpx 3rpx 3rpx;
+  justify-content: center;
+  border-color: #E5E5E5;
+  border-style: solid;
+  border-radius: 20rpx;
+  left: 230rpx;
+}
+.add-comment{
+  position: absolute;
+  top: 410rpx;
+}
+.input-comment{
+  height: 500rpx;
+  width: 550rpx;
+  font-size: 33rpx;
+  line-height: 46.2rpx;
+}
+.input-placeholder{
+  font-size: 33rpx;
+}
+.voice-img{
+  opacity: 0.7;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.voice-word{
+  margin-left: 15rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  opacity: 0.5;
+}

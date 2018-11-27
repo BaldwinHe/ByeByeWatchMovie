@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    movie: {
+      img: '/images/movie-img.png',
+      name: '复仇者联盟3：无限战争'
+    },
+    operation:0
   },
 
   /**

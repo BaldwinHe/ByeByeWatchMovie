@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -64,7 +64,13 @@
 				{
 					"id": -1,
 					"name": "影评列表",
-					"pathName": "pages/list-comment/list-comment"
+					"pathName": "pages/list-comment/list-comment",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "影评编辑",
+					"pathName": "pages/edit-comment/edit-comment"
 				}
 			]
 		}
