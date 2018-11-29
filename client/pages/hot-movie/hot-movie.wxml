@@ -1,7 +1,7 @@
 <view class='hot-movie'>
-  <view class='movie-block' wx:for="{{movie}}">
-    <image class='movie-img' src='{{item.img}}'></image>
-    <view class='movie-name'>{{item.name}}</view>
-    <view class='movie-class'>类型：{{item.classify}}</view>
+  <view class='movie-block' wx:for="{{movieList}}" bindtap='getMovieDetail' data-id="{{item.id}}">
+    <image class='movie-img' src='{{item.image}}'></image>
+    <view class='movie-name'>{{item.title}}</view>
+    <view class='movie-class'>类型：{{item.category}}</view>
   </view>
 </view>

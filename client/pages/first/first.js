@@ -21,7 +21,6 @@ Page({
       username: "柏柏",
       userheadimg: '/images/head-img.png'
     })
-    console.log(this.data.movieimg)
   },
 
   /**
@@ -71,5 +70,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getMyLoveComment: function(){
+    wx.navigateTo({
+      url: '/pages/users/users',
+    })
+  },
+  getHotMovie:function(){
+    wx.navigateTo({
+      url: '/pages/hot-movie/hot-movie',
+    })
   }
 })

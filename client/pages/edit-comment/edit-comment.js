@@ -1,4 +1,8 @@
 // pages/edit-comment/edit-comment.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
+const app = getApp()
+
 Page({
 
   /**
@@ -9,7 +13,25 @@ Page({
       img: '/images/movie-img.png',
       name: '复仇者联盟3：无限战争'
     },
-    operation:0
+    operation:0,
+    userInfo:null,
+    locationAuthType: app.data.locationAuthType
+  },
+
+  onTapLogin() {
+    app.login({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo,
+          locationAuthType: app.data.locationAuthType
+        })
+      },
+      error: () => {
+        this.setData({
+          locationAuthType: app.data.locationAuthType
+        })
+      }
+    })
   },
 
   /**
@@ -30,7 +52,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      locationAuthType: app.data.locationAuthType
+    })
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+      }
+    })
   },
 
   /**

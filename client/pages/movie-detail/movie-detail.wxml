@@ -1,8 +1,10 @@
 <!--pages/movie-detail/movie-detail.wxml-->
-<image class='movie-img' src="{{movie.img}}"></image>
+<image class='movie-img' src="{{movie.image}}"></image>
 <view class='movie-detail-block'>
-  <view class='movie-name'>{{movie.name}}</view>
-  <view class='movie-detail'>{{movie.detail}}</view>
+  <view class='movie-name'>{{movie.title}}</view>
+  <scroll-view scroll-y='{{true}}' class = "scroll-block">
+    <view class='movie-detail'>{{movie.description}}</view>
+  </scroll-view>   
 
   <view class='check-comment'>
     <image class='comment-img' src='/images/find.png'></image>

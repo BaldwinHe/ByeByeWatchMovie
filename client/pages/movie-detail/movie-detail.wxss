@@ -38,10 +38,10 @@ background: #E8ECEF;
   top: 330rpx;
 }
 
-.movie-detail{
+.scroll-block{
   position: absolute;
   width: 450rpx;
-  height: 700rpx;
+  height: 450rpx;
   font-weight: bold;
   opacity: 0.7;
   font-size: 32rpx;

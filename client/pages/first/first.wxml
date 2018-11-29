@@ -8,11 +8,11 @@
   </view>
 </view>
   <view class='connect-block'>
-    <view class='connect-item'>
+    <view class='connect-item' bindtap='getHotMovie'>
       <image class='mini-img' src='/images/magnifying-glass.png'></image>
       <text class='mini-text'>热门</text>
     </view>
-    <view class='connect-item'>
+    <view class='connect-item' bindtap='getMyLoveComment' >
       <image class='mini-img' src='/images/like.png'></image>
       <text class='mini-text'>我的</text>
     </view>

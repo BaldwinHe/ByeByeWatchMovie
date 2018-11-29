@@ -1,29 +1,50 @@
 // pages/hot-movie/hot-movie.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    movie: [
-      {
-        img: '/images/movie-img.png',
-        name: '复仇者联盟3：无限战争',
-        classify:'GayGay/超暴力'
+    movieList: [],
+  },
+
+  getHotMovieList() {
+    wx.showLoading({
+      title: '火爆电影加载中...',
+    })
+    qcloud.request({
+      url: config.service.movieList,
+      success: result => {
+        wx.hideLoading()
+        console.log(result.data.data)
+        if (!result.data.code) {
+          this.setData({
+            movieList: result.data.data
+          })
+        } else {
+          wx.showToast({
+            title: '火爆电影加载失败!',
+          })
+        }
       },
-      {
-        img: '/images/movie-img.png',
-        name: '复仇者联盟3：无限战争',
-        classify: 'GayGay/超暴力'
+      fail: result => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '火爆电影加载失败!',
+        })
+        console.log("Error!")
       }
-    ]
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getHotMovieList()
   },
 
   /**
@@ -73,5 +94,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  getMovieDetail:function(event){
+    let ID = event.currentTarget.dataset.id; 
+    wx.navigateTo({
+      url: '/pages/movie-detail/movie-detail?id=' + ID,
+    })
   }
 })
