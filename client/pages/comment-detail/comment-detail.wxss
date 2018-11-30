@@ -4,6 +4,7 @@ background: #E8ECEF;
 }
 
 .movie-img{
+  z-index: 2;
   position: absolute;
   width: 270rpx;
   height: 358rpx;
@@ -12,7 +13,7 @@ background: #E8ECEF;
 }
 
 .movie-detail-block{
-  z-index: -1;
+  z-index: 1;
   position: relative;
   width: 670rpx;
   height: 1060rpx;
@@ -90,6 +91,7 @@ background: #E8ECEF;
 .comment-word{
 }
 .collect-comment{
+  z-index: 10;
   position: absolute;
   bottom: 30rpx;
   width: 240rpx;
@@ -104,6 +106,7 @@ background: #E8ECEF;
   left: 50rpx;
 }
 .write-comment{
+  z-index: 10;
   position: absolute;
   bottom: 30rpx;
   width: 240rpx;

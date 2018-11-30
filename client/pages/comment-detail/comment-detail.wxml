@@ -14,7 +14,7 @@
     <view class='comment-word'>{{commentword}}</view>
   </scroll-view>   
 
-  <view class='write-comment'>
+  <view class='write-comment' bindtap="openActionsheet">
     <image class='connect-img' src='/images/scroll.png'></image>
     <view class='connect-word'>写影评</view>
   </view>

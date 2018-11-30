@@ -6,12 +6,12 @@
     <view class='movie-detail'>{{movie.description}}</view>
   </scroll-view>   
 
-  <view class='check-comment'>
+  <view class='check-comment' bindtap="toCommentDetail">
     <image class='comment-img' src='/images/find.png'></image>
     <view class='comment-word'>查看影评</view>
   </view>
 
-  <view class='add-comment'>
+  <view class='add-comment' bindtap="openActionsheet">
     <image class='comment-img' src='/images/comment.png'></image>
     <view class='comment-word'>添加影评</view>
   </view>

@@ -20,7 +20,23 @@ Page({
   onLoad: function (options) {
 
   },
-
+  openActionsheet: function () {
+    wx.showActionSheet({
+      itemList: ["文字", "音频"],
+      success(res) {
+        console.log(res.tapIndex);
+        if (res.tapIndex === 0) {
+          wx.navigateTo({
+            url: '/pages/edit-comment/edit-comment?id=' + 0,
+          })
+        } else if (res.tapIndex === 1) {
+          wx.navigateTo({
+            url: '/pages/edit-comment/edit-comment?id=' + 1,
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

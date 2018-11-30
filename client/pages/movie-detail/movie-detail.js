@@ -30,7 +30,6 @@ Page({
       url: config.service.movieDetail + id,
       success: result => {
         wx.hideLoading()
-        console.log(result)
         let data = result.data;
         if (!data.code) {
           this.setData({
@@ -51,7 +50,30 @@ Page({
       }
     })
   },
-
+  openActionsheet: function () {
+    console.log("Hello")
+    wx.showActionSheet({
+      itemList: ["文字","音频"],
+      success(res) {
+        console.log(res.tapIndex);
+        if (res.tapIndex === 0) {
+          wx.navigateTo({
+            url: '/pages/edit-comment/edit-comment?id=' + 0,
+          })
+        } else if (res.tapIndex === 1){
+          wx.navigateTo({
+            url: '/pages/edit-comment/edit-comment?id=' + 1,
+          })
+        }
+      }
+    })
+  },
+  
+  toCommentDetail: function() {
+    wx.navigateTo({
+      url: '/pages/list-comment/list-comment?id=' + movieID,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
