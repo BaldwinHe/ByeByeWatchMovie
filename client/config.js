@@ -28,6 +28,15 @@ var config = {
         movieDetail: `${host}/weapp/movie/`,
 
         user: `${host}/weapp/user`,
+
+        // 添加评论
+        addComment: `${host}/weapp/comment`,
+
+        // 获取影评列表
+        commentList: `${host}/weapp/comment`,
+
+        // 获取收藏列表
+        userLoveList: `${host}/weapp/comment`,
     }
 };
 

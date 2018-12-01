@@ -35,4 +35,14 @@ router.post('/message', controllers.message.post)
 router.get('/movie', controllers.movie.list)
 router.get('/movie/:id', controllers.movie.detail)
 
+// 添加电影影评
+router.put('/comment', validationMiddleware, controllers.comment.add)
+
+
+// 获取电影影评列表
+router.get('/comment', controllers.comment.movieList)
+
+// 获取用户收藏电影影评列表
+router.get('/comment', controllers.comment.userLoveList)
+
 module.exports = router
