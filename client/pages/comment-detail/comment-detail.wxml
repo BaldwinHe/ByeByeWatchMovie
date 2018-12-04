@@ -1,7 +1,7 @@
 <!--pages/movie-detail/movie-detail.wxml-->
-<image class='movie-img' src="{{movie.img}}"></image>
+<image class='movie-img' src="{{movie.image}}"></image>
 <view class='movie-detail-block'>
-  <view class='movie-name'>{{movie.name}}</view>
+  <view class='movie-name'>{{movie.title}}</view>
 
   <view class='user-comment'>
     <image class='user-head-image' src='{{userheadimg}}'></image>

@@ -1,26 +1,22 @@
 // pages/first/first.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
+const _ = require('../../utils/util')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    moviename:"",
-    movieimg:'',
-    username:"",
-    userheadimg:''
+    commentInfo:{},
+    movieData: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      moviename: "复仇者联盟3：无限战争",
-      movieimg: '/images/movie-img.png',
-      username: "柏柏",
-      userheadimg: '/images/head-img.png'
-    })
+    this.getFirstMovie()
   },
 
   /**
@@ -30,6 +26,85 @@ Page({
 
   },
 
+  randInt(n,m) {
+    var random = Math.floor(Math.random() * (m - n + 1) + n);
+    return random;
+  },
+
+  getFirstMovie() {
+    let select = {}
+    let temp = []
+    wx.showLoading({
+      title: '首页加载中...',
+    })
+    qcloud.request({
+      url: config.service.getList,
+      success: result => {
+        console.log(result)
+        wx.hideLoading()
+        if (!result.data.code) {
+          temp = result.data.data
+          let num = this.randInt(0, temp.length-1)
+          select = temp[num];
+          this.setData({
+            commentInfo: select
+          })
+          this.getMovie(select.movie_id)
+        } else {
+          wx.showToast({
+            title: '首页加载失败!',
+          })
+        }
+      },
+      fail: result => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '首页加载失败!',
+        })
+        console.log("Error!")
+      }
+    })
+  },
+
+
+  getMovie(id) {
+    wx.showLoading({
+      title: '首页电影数据加载中...',
+    })
+    qcloud.request({
+      url: config.service.movieDetail + id,
+      success: result => {
+        wx.hideLoading()
+        let data = result.data;
+        if (!data.code) {
+          this.setData({
+            movieData: data.data
+          })
+        } else {
+          console.log("Error!")
+        }
+      },
+      fail: result => {
+        wx.hideLoading()
+        console.log("Error!")
+      }
+    })
+  },
+
+  getMovieDetail(){
+    let ID = this.data.commentInfo.movie_id;
+    wx.navigateTo({
+      url: '/pages/movie-detail/movie-detail?id=' + ID,
+    })
+  },
+  getCommentDetail() {
+    let movieID = this.data.commentInfo.movie_id;
+    let movie = this.data.movieData;
+    let thing = this.data.commentInfo;
+    wx.navigateTo({
+      url: '/pages/comment-detail/comment-detail?thing=' + JSON.stringify(thing) + '&movie_id=' + movieID + '&movie=' + JSON.stringify(movie),
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

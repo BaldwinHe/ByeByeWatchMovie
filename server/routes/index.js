@@ -39,10 +39,13 @@ router.get('/movie/:id', controllers.movie.detail)
 router.put('/comment', validationMiddleware, controllers.comment.add)
 
 
-// 获取电影影评列表
-router.get('/comment', controllers.comment.movieList)
+// 获取特定电影影评列表
+router.get('/comment/:id', controllers.comment.movieList)
+
+// 获取全部电影影评列表
+router.get('/comment', controllers.comment.getList)
 
 // 获取用户收藏电影影评列表
-router.get('/comment', controllers.comment.userLoveList)
+//router.get('/comment', controllers.comment.userLoveList)
 
 module.exports = router

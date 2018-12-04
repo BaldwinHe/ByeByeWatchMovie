@@ -1,10 +1,10 @@
 <!--pages/first/first.wxml-->
 <view class="movie-block">
-  <image class='movie-img' src='{{movieimg}}'></image>
-  <text class='movie-name'>{{moviename}}</text>
-  <view class='user-recommend'>
-    <image class='user-head-image' src='{{userheadimg}}'></image>
-    <view class='user-word'>{{username}}向你推荐了一部电影</view>
+  <image class='movie-img' src='{{movieData.image}}' bindtap='getMovieDetail'></image>
+  <text class='movie-name' bindtap='getMovieDetail'>{{movieData.title}}</text>
+  <view class='user-recommend' bindtap='getCommentDetail'>
+    <image class='user-head-image' src='{{commentInfo.avatar}}'></image>
+    <view class='user-word'>{{commentInfo.username}}向你推荐了一部电影</view>
   </view>
 </view>
   <view class='connect-block'>

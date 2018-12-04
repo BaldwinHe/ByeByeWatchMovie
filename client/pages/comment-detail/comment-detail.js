@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    movie_id:0,
     movie: {
       img: '/images/movie-img.png',
       name: '复仇者联盟3：无限战争'
@@ -18,7 +19,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let nowThings = JSON.parse(options.thing);
+    let movie = JSON.parse(options.movie);
+    let movie_id = options.movie_id;
+    this.setData({
+      username: nowThings.username,
+      userheadimg: nowThings.avatar,
+      commentword: nowThings.content,
+      movie:movie,
+      movie_id:movie_id
+    })
   },
   openActionsheet: function () {
     wx.showActionSheet({

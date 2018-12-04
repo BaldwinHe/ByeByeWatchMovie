@@ -11,7 +11,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movieID : 0,
     movie:{}
   },
 
@@ -51,27 +50,28 @@ Page({
     })
   },
   openActionsheet: function () {
-    console.log("Hello")
+    let movie = this.data.movie;
     wx.showActionSheet({
       itemList: ["文字","音频"],
       success(res) {
-        console.log(res.tapIndex);
         if (res.tapIndex === 0) {
           wx.navigateTo({
-            url: '/pages/edit-comment/edit-comment?id=' + 0,
+            url: '/pages/edit-comment/edit-comment?id=' + 0 + '&movie=' + JSON.stringify(movie)
           })
         } else if (res.tapIndex === 1){
           wx.navigateTo({
-            url: '/pages/edit-comment/edit-comment?id=' + 1,
+            url: '/pages/edit-comment/edit-comment?id=' + 1 + '&movie=' + JSON.stringify(movie)
           })
         }
       }
     })
   },
-  
+
   toCommentDetail: function() {
+    let movie = this.data.movie
+    let movieID = this.data.movie.id
     wx.navigateTo({
-      url: '/pages/list-comment/list-comment?id=' + movieID,
+      url: '/pages/list-comment/list-comment?id=' + movieID + '&movie=' + JSON.stringify(movie)
     })
   },
   /**

@@ -28,13 +28,17 @@ module.exports = {
    * 获取电影评论列表
    */
   movieList: async ctx => {
-    let movieId = +ctx.request.query.movie_id
+    let movieId = + ctx.params.id
 
     if (!isNaN(movieId)) {
       ctx.state.data = await DB.query('select * from comment where comment.movie_id = ?', [movieId])
     } else {
       ctx.state.data = []
     }
+  },
+  
+  getList: async ctx => {
+    ctx.state.data = await DB.query("SELECT * FROM comment;")
   },
   
   userLoveList: async ctx => {

@@ -11,18 +11,22 @@
 </view>
 
 <view wx:else>
-  <image class='movie-img' src="{{movie.img}}"></image>
+  <image class='movie-img' src="{{movie.image}}"></image>
   <view class='movie-detail-block'>
-    <view class='movie-name'>{{movie.name}}</view>
-    <view class='movie-detail'>{{movie.detail}}</view>
+    <view class='movie-name'>{{movie.title}}</view>
 
     <view class='add-comment' wx:if='{{operation==0}}'>
-      <textarea class="input-comment" placeholder="请输入你的影评内容..." placeholder-class = 'input-placeholder' auto-focus/>
+      <textarea class="input-comment" placeholder="请输入你的影评内容..." placeholder-class = 'input-placeholder' auto-focus bindinput='bindInputText' maxlength='-1'/>
     </view>
     <view class='add-voice' wx:if='{{operation==1}}'>
       <image class='voice-img' src='/images/microphone.png'></image>
       <view class='voice-word'>录音</view>
     </view>
   </view>
-  <button class = 'havebtn'>完成</button>
+  <view wx:if='{{contentLength==0}}'>
+    <button class = 'havebtn' bindtap='editDone' disabled='true'>完成</button>
+  </view>
+  <view wx:if='{{contentLength > 0}}'>
+    <button class = 'havebtn' bindtap='editDone'>完成</button>
+  </view>
 </view>

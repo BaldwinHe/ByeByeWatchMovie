@@ -9,13 +9,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movie: {
-      img: '/images/movie-img.png',
-      name: '复仇者联盟3：无限战争'
-    },
+    movie: {},
     operation:0,
     userInfo:null,
-    locationAuthType: app.data.locationAuthType
+    locationAuthType: app.data.locationAuthType,
+    content:"",
+    contentLength:0
   },
 
   onTapLogin() {
@@ -40,9 +39,24 @@ Page({
   onLoad: function (options) {
     this.setData({
       operation: options.id,
+      movie: JSON.parse(options.movie)
     })
   },
-
+  editDone: function(){
+    let userinfo = this.data.userInfo
+    let content = this.data.content
+    let operation = this.data.operation
+    let movie = this.data.movie
+    wx.navigateTo({
+      url: '/pages/preview-comment/preview-comment?userinfo=' + JSON.stringify(userinfo) + '&movie=' + JSON.stringify(movie) + '&operation=' + operation + '&content=' + content
+    })
+  },
+  bindInputText: function (e) {
+    this.setData({
+      content: e.detail.value,
+      contentLength: e.detail.cursor
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

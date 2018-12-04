@@ -1,25 +1,25 @@
 <!--pages/movie-detail/movie-detail.wxml-->
-<image class='movie-img' src="{{movie.img}}"></image>
+<image class='movie-img' src="{{movie.image}}"></image>
 <view class='movie-detail-block'>
-  <view class='movie-name'>{{movie.name}}</view>
+  <view class='movie-name'>{{movie.title}}</view>
 
   <view class='user-comment'>
-    <image class='user-head-image' src='{{userheadimg}}'></image>
-    <view class='user-word'>{{username}}的影评</view>
+    <image class='user-head-image' src='{{userInfo.avatarUrl}}'></image>
+    <view class='user-word'>{{userInfo.nickName}}的影评</view>
   </view>
 
   <image class='right-arrow' src='/images/finger-of-a-hand-pointing-to-right-direction.png'></image>
 
   <scroll-view scroll-y='{{true}}' class = "scroll-block">
-    <view class='comment-word'>{{commentword}}</view>
+    <view class='comment-word'>{{comment}}</view>
   </scroll-view>   
 
-  <view class='write-comment'>
+  <view class='write-comment' bindtap='sendComment'>
     <image class='connect-img' src='/images/send.png'></image>
     <view class='connect-word'>发布影评</view>
   </view>
 
-  <view class='collect-comment'>
+  <view class='collect-comment' bindtap='navBack'>
     <image class='connect-img' src='/images/return.png'></image>
     <view class='connect-word'>重新编辑</view>
   </view>

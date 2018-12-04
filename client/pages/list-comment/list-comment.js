@@ -1,4 +1,7 @@
 // pages/list-comment/list-comment.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
+const _ = require('../../utils/util')
 Page({
 
   /**
@@ -6,23 +9,9 @@ Page({
    */
   data: {
     movieID:0,
-    comment: [
-      {
-        userimg: '/images/head-img.png',
-        username: '柏柏',
-        commentdetail: '开场阿斯加德人遭到了灭霸的袭击，他们对附近发出了求救讯号，抵抗已经失败，乌木喉跨过死者，受伤的海姆达尔躺在地上，洛基被黑暗教团包围，灭霸一个人船首把托尔带到他面前，问是要他哥的头还是空间宝石。 过程中灭霸说了他失败的感受，索尔喷他话太多'
-      },
-      {
-        userimg: '/images/head-img.png',
-        username: '板栗',
-        commentdetail: '老实市民为何在头上镶钻？ 性感少妇为何羊癫疯发作？ 为什么她去做了头发，他就绿了？ 为什么雷神在《雷神3》看了整整一集绿巨人，不但没让视力变得更好，反而还瞎了一只眼睛？说好的多看绿色可以改善视力呢？ 雷神单眼开飞船，是否违反宇宙交通管理条例'
-      },
-      {
-        userimg: '/images/head-img.png',
-        username: '猪',
-        commentdetail: '不剧透是不可能不剧透的，这辈子都不可能不剧透的，正儿八经的影评嘛又不会'
-      }
-    ]
+    commentList: [],
+    oriCommentList: [],
+    movie:{}
   },
 
   /**
@@ -30,21 +19,54 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      movieID: options.id
+      movieID: options.id,
+      movie:JSON.parse(options.movie)
     })
-    var newcomment = this.data.comment;
-    for(var i = 0;i<newcomment.length;i++){
-      var nowcomment = newcomment[i];
-      if(nowcomment.commentdetail.length > 10){
-        nowcomment.commentdetail = nowcomment.commentdetail.substring(0, 20) + '...';
-      }
-      newcomment[i] = nowcomment;
-    }
-    this.setData({
-      comment:newcomment
+    this.getCommentList(this.data.movieID)
+    console.log(this.data.commentList)
+    console.log(this.data.commentList)
+  },
+
+  getCommentList(id) {
+    qcloud.request({
+      url: config.service.commentList + id,
+      success: result => {
+        let data = result.data
+        if (!data.code) {
+          this.setData({
+            oriCommentList: data.data,
+            commentList: data.data
+          })
+          var newcomment = this.data.commentList;
+          for (var i = 0; i < newcomment.length; i++) {
+            var nowcomment = newcomment[i];
+            if (nowcomment.content.length > 20) {
+              nowcomment.content = nowcomment.content.substring(0, 20) + '...';
+            }
+            newcomment[i] = nowcomment;
+          }
+          this.setData({
+            commentList: newcomment
+          })
+          console.log(this.data.commentList)
+        }
+      },
     })
   },
 
+  getCommentDetail: function (event) {
+    let thing = this.data.oriCommentList[event.currentTarget.dataset.idx];
+    let movieID = this.data.movieID
+    let movie = this.data.movie
+    wx.navigateTo({
+      url: '/pages/comment-detail/comment-detail?thing=' + JSON.stringify(thing) + '&movie_id=' + movieID + '&movie=' + JSON.stringify(movie),
+    })
+  },
+  goToFirstPage: function(){
+    wx.navigateTo({
+      url: '/pages/first/first'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

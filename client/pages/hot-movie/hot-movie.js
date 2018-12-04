@@ -19,7 +19,6 @@ Page({
       url: config.service.movieList,
       success: result => {
         wx.hideLoading()
-        console.log(result.data.data)
         if (!result.data.code) {
           this.setData({
             movieList: result.data.data

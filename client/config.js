@@ -33,7 +33,10 @@ var config = {
         addComment: `${host}/weapp/comment`,
 
         // 获取影评列表
-        commentList: `${host}/weapp/comment`,
+        commentList: `${host}/weapp/comment/`,
+        
+        // 获取全部影评列表
+        getList: `${host}/weapp/comment`,
 
         // 获取收藏列表
         userLoveList: `${host}/weapp/comment`,
