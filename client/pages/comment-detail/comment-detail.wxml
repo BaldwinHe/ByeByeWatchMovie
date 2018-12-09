@@ -10,16 +10,18 @@
 
   <image class='right-arrow' src='/images/finger-of-a-hand-pointing-to-right-direction.png'></image>
 
-  <scroll-view scroll-y='{{true}}' class = "scroll-block">
+  <scroll-view scroll-y='{{true}}' class = "scroll-block" wx:if= "{{comment.types == 0}}">
     <view class='comment-word'>{{commentword}}</view>
   </scroll-view>   
+
+  <button bindtap='playRecord' wx:if= "{{comment.types == 1}}">播放录音</button>
 
   <view class='write-comment' bindtap="openActionsheet">
     <image class='connect-img' src='/images/scroll.png'></image>
     <view class='connect-word'>写影评</view>
   </view>
 
-  <view class='collect-comment'>
+  <view class='collect-comment' bindtap="addCollectMovie">
     <image class='connect-img' src='/images/fireworks.png'></image>
     <view class='connect-word'>收藏影评</view>
   </view>

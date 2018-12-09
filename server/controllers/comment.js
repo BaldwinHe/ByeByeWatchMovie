@@ -13,12 +13,11 @@ module.exports = {
     let movieId = +ctx.request.body.movie_id
     let content = ctx.request.body.content || null
 
-    let images = ctx.request.body.images || []
-    images = images.join(';;')
+    let types = ctx.request.body.Type
 
 
     if (!isNaN(movieId)) {
-      await DB.query('INSERT INTO comment(user, username, avatar, content, images, movie_id) VALUES (?, ?, ?, ?, ?, ?)', [user, username, avatar, content, images, movieId])
+      await DB.query('INSERT INTO comment(user, username, avatar, content, types, movie_id) VALUES (?, ?, ?, ?, ?, ?)', [user, username, avatar, content, types, movieId])
     }
 
     ctx.state.data = {}

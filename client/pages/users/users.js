@@ -1,6 +1,8 @@
 // pages/users/users.js
 const app = getApp()
-
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
+const _ = require('../../utils/util')
 Page({
 
   /**
@@ -9,16 +11,7 @@ Page({
   data: {
     userInfo: null,
     locationAuthType: app.data.locationAuthType,
-    movie : [
-      { 
-        img: '/images/movie-img.png',
-        name: '复仇者联盟3：无限战争'
-      },
-      {
-        img: '/images/movie-img.png',
-        name: '复仇者联盟3：无限战争'
-      }
-    ]
+    movie: {}
   },
 
   onTapLogin() {
@@ -40,9 +33,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
   },
 
+  getMyLove: function(){
+    wx.showLoading({
+      title: '获取影评收藏数据...',
+    })
+    qcloud.request({
+      url: config.service.getCollect,
+      login: true,
+      success: result => {
+        wx.hideLoading()
+
+        let data = result.data
+        console.log(data.data.length)
+        for (let i = 0; i < data.data.length;i++){
+          data.data[i].comment = JSON.parse(data.data[i].comment)
+          data.data[i].movie = JSON.parse(data.data[i].movie)
+        }
+        if (!data.code) {
+          console.log(data)
+          this.setData({
+            movie: data.data
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '获取数据失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '获取数据失败',
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -62,6 +91,7 @@ Page({
         this.setData({
           userInfo
         })
+        this.getMyLove();
       }
     })
   },

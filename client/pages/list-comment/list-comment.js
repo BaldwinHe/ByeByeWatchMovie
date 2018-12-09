@@ -40,8 +40,10 @@ Page({
           var newcomment = this.data.commentList;
           for (var i = 0; i < newcomment.length; i++) {
             var nowcomment = newcomment[i];
-            if (nowcomment.content.length > 20) {
-              nowcomment.content = nowcomment.content.substring(0, 20) + '...';
+            if(nowcomment.types == 0){
+              if (nowcomment.content.length > 20) {
+                nowcomment.content = nowcomment.content.substring(0, 20) + '...';
+              }
             }
             newcomment[i] = nowcomment;
           }
@@ -54,7 +56,15 @@ Page({
     })
   },
 
+  playRecord: function (event) {
+    let source = event.currentTarget.dataset.path
+    this.innerAudioContext = wx.createInnerAudioContext()
+    this.innerAudioContext.src = source
+    this.innerAudioContext.play()
+  },
+
   getCommentDetail: function (event) {
+    let index = event.currentTarget.dataset.idx;
     let thing = this.data.oriCommentList[event.currentTarget.dataset.idx];
     let movieID = this.data.movieID
     let movie = this.data.movie

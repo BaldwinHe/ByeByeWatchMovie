@@ -7,7 +7,8 @@
         <image class='user-head' src='{{item.avatar}}'></image>
         <view class='user-name'>{{item.username}}</view>
       </view>
-      <view class='user-commentdetail'>{{item.content}}</view>
+      <view class='user-commentdetail' wx:if='{{item.types == 0}}'>{{item.content}}</view>
+      <button bindtap='playRecord' wx:if= '{{item.types == 1}}'  data-path="{{items.content}}">播放录音</button>
     </view>
   </view>
 </view>

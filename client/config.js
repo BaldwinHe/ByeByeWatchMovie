@@ -40,6 +40,10 @@ var config = {
 
         // 获取收藏列表
         userLoveList: `${host}/weapp/comment`,
+
+        addCollect: `${host}/weapp/collect`,
+
+        getCollect: `${host}/weapp/collect`,
     }
 };
 

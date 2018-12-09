@@ -31,7 +31,14 @@ Page({
     return random;
   },
 
-  getFirstMovie() {
+  onPullDownRefresh: function () {
+    console.log(">>")
+    this.getFirstMovie(() => {
+      wx.stopPullDownRefresh()
+    })
+  },
+  
+  getFirstMovie(callback) {
     let select = {}
     let temp = []
     wx.showLoading({
@@ -40,7 +47,6 @@ Page({
     qcloud.request({
       url: config.service.getList,
       success: result => {
-        console.log(result)
         wx.hideLoading()
         if (!result.data.code) {
           temp = result.data.data
@@ -62,6 +68,9 @@ Page({
           title: '首页加载失败!',
         })
         console.log("Error!")
+      },
+      complete: () => {
+        callback && callback()
       }
     })
   },

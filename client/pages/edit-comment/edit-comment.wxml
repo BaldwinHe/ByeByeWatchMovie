@@ -18,10 +18,10 @@
     <view class='add-comment' wx:if='{{operation==0}}'>
       <textarea class="input-comment" placeholder="请输入你的影评内容..." placeholder-class = 'input-placeholder' auto-focus bindinput='bindInputText' maxlength='-1'/>
     </view>
-    <view class='add-voice' wx:if='{{operation==1}}'>
+    <buttton class='add-voice' wx:if='{{operation==1}}' catchtouchstart='startGet' catchtouchend='endGet'>
       <image class='voice-img' src='/images/microphone.png'></image>
       <view class='voice-word'>录音</view>
-    </view>
+    </buttton>
   </view>
   <view wx:if='{{contentLength==0}}'>
     <button class = 'havebtn' bindtap='editDone' disabled='true'>完成</button>

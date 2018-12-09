@@ -1,10 +1,21 @@
+CREATE TABLE `collect` (
+  `id` int(11) NOT NULL AUTO_INCREMENT  PRIMARY KEY,
+  `user` varchar(255) NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `avatar` varchar(255) NOT NULL,
+  `movie` varchar(4095) CHARACTER SET utf8 DEFAULT NULL,
+  `comment` varchar(4095) CHARACTER SET utf8 DEFAULT NULL,
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT  PRIMARY KEY,
   `user` varchar(255) NOT NULL,
   `username` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `avatar` varchar(255) NOT NULL,
   `content` varchar(511) CHARACTER SET utf8 DEFAULT NULL,
-  `images` varchar(1023) DEFAULT NULL,
+  `types` int(11) NOT NULL,
   `movie_id` int(11) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

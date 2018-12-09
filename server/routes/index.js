@@ -45,7 +45,10 @@ router.get('/comment/:id', controllers.comment.movieList)
 // 获取全部电影影评列表
 router.get('/comment', controllers.comment.getList)
 
-// 获取用户收藏电影影评列表
-//router.get('/comment', controllers.comment.userLoveList)
+//添加收藏电影
+router.put('/collect', validationMiddleware, controllers.collect.add)
+
+//获取收藏电影
+router.get('/collect', validationMiddleware, controllers.collect.list)
 
 module.exports = router

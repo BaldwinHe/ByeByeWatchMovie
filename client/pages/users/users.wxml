@@ -17,11 +17,11 @@
   </view>
   <view class='my-love-movie'>
     <view class='movie-block' wx:for="{{movie}}">
-      <image class='movie-img' src='{{item.img}}'></image>
-      <view class='movie-name'>{{item.name}}</view>
+      <image class='movie-img' src='{{item.movie.image}}'></image>
+      <view class='movie-name'>{{item.movie.title}}</view>
       <view class='recommender'>
-        <image class='user-head' src='/images/head-img.png'></image>
-        <view class='user-name'>柏柏</view>
+        <image class='user-head' src='{{item.comment.avatar}}'></image>
+        <view class='user-name'>{{item.comment.username}}</view>
       </view>
     </view>
   </view>

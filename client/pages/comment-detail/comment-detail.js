@@ -1,4 +1,7 @@
 // pages/comment-detail/comment-detail.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index')
+const config = require('../../config')
+const app = getApp()
 Page({
 
   /**
@@ -10,6 +13,7 @@ Page({
       img: '/images/movie-img.png',
       name: '复仇者联盟3：无限战争'
     },
+    comment:{},
     username: "柏柏",
     userheadimg: '/images/head-img.png',
     commentword: '索尔：嗨，大家好，我是雷神索尔，上一集中我没了锤子还没了右眼，那还玩个锤子？所以这一集中我改用斧子了。虽然我遭受的创伤是所有人中最多的，但是放心吧，我可是男主角，哦不，我是说放心吧我可是一个神，所以我不会这么轻易地狗带的。抱歉各位，最后一斧子没劈到灭霸的头，让他打了个响指，但我真的已经尽力了。'
@@ -27,25 +31,80 @@ Page({
       userheadimg: nowThings.avatar,
       commentword: nowThings.content,
       movie:movie,
-      movie_id:movie_id
+      movie_id:movie_id,
+      comment: nowThings
     })
+    if(this.data.comment.types == 1){
+      this.innerAudioContext = wx.createInnerAudioContext()
+      this.innerAudioContext.src = this.data.comment.content
+    }
   },
   openActionsheet: function () {
+    let movie = this.data.movie
     wx.showActionSheet({
       itemList: ["文字", "音频"],
       success(res) {
-        console.log(res.tapIndex);
         if (res.tapIndex === 0) {
           wx.navigateTo({
-            url: '/pages/edit-comment/edit-comment?id=' + 0,
+            url: '/pages/edit-comment/edit-comment?id=' + 0 + '&movie=' + JSON.stringify(movie),
           })
         } else if (res.tapIndex === 1) {
           wx.navigateTo({
-            url: '/pages/edit-comment/edit-comment?id=' + 1,
+            url: '/pages/edit-comment/edit-comment?id=' + 1 + '&movie=' + JSON.stringify(movie),
           })
         }
       }
     })
+  },
+
+
+  addCollectMovie(){
+    let content = this.data.comment
+    wx.showLoading({
+      title: '正在收藏影评...'
+    })
+    qcloud.request({
+      url: config.service.addCollect,
+      login: true,
+      method: 'PUT',
+      data: {
+        moviedata: JSON.stringify(this.data.movie),
+        commentdata: JSON.stringify(this.data.comment)
+      },
+      success: result => {
+        wx.hideLoading()
+        let data = result.data
+        if (!data.code) {
+          if(data.data){
+            wx.showToast({
+              title: '该影评已收藏过'
+            })
+          }
+          else{
+              wx.showToast({
+              title: '该影评成功收藏'
+            })
+          }
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '收藏影评失败'
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '收藏影评失败'
+        })
+      }
+    })
+  },
+
+  playRecord: function () {
+    console.log(this.innerAudioContext)
+    this.innerAudioContext.play()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

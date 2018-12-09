@@ -8,6 +8,12 @@ const CONF = {
     // 微信小程序 App Secret
     appSecret: '59cfdffe3a4a20457945903073b339ef',
 
+    qcloudAppId: '1257919653',
+
+    qcloudSecretId: 'AKIDwqggXBGgWR315DDCfWEqJj2HzZHwxsgR',
+
+    qcloudSecretKey: 'xz2wgKozndM0VuibQ6nU4Wo150MtNOQT',
+    
     // 是否使用腾讯云代理登录小程序
     useQcloudLogin: false,
 
@@ -32,14 +38,17 @@ const CONF = {
          */
         region: 'ap-guangzhou',
         // Bucket 名称
-        fileBucket: 'qcloudtest',
+        fileBucket: 'voice',
         // 文件夹
-        uploadFolder: ''
+        uploadFolder: 'audio',
+
+        mimetypes: ['audio/x-aac', 'audio/aac', 'audio/mpeg', 'video/webm', 'audio/mp3', 'audio/m4a']
     },
 
     // 微信登录态有效期
     wxLoginExpires: 7200,
-    wxMessageToken: 'abcdefgh'
+    wxMessageToken: 'abcdefgh',
+    
 }
 
 module.exports = CONF
