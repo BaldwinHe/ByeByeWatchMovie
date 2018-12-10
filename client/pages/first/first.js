@@ -30,14 +30,6 @@ Page({
     var random = Math.floor(Math.random() * (m - n + 1) + n);
     return random;
   },
-
-  onPullDownRefresh: function () {
-    console.log(">>")
-    this.getFirstMovie(() => {
-      wx.stopPullDownRefresh()
-    })
-  },
-  
   getFirstMovie(callback) {
     let select = {}
     let temp = []
@@ -74,7 +66,6 @@ Page({
       }
     })
   },
-
 
   getMovie(id) {
     wx.showLoading({
@@ -139,7 +130,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showNavigationBarLoading()
+    this.getFirstMovie()
+    wx.hideNavigationBarLoading()
   },
 
   /**
