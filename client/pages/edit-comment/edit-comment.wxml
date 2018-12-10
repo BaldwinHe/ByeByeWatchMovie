@@ -16,7 +16,7 @@
     <view class='movie-name'>{{movie.title}}</view>
 
     <view class='add-comment' wx:if='{{operation==0}}'>
-      <textarea class="input-comment" placeholder="请输入你的影评内容..." placeholder-class = 'input-placeholder' auto-focus bindinput='bindInputText' maxlength='-1'/>
+      <textarea class="input-comment" placeholder="请输入你的影评内容..." placeholder-class = 'input-placeholder' auto-focus bindinput='bindInputText' maxlength='250'/>
     </view>
     <buttton class='add-voice' wx:if='{{operation==1}}' catchtouchstart='startGet' catchtouchend='endGet'>
       <image class='voice-img' src='/images/microphone.png'></image>

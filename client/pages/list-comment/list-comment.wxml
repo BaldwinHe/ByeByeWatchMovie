@@ -10,7 +10,7 @@
       <view class='user-commentdetail' wx:if='{{item.types == 0}}'>{{item.content}}</view>
       <view class='voice-button' wx:if= '{{item.types == 1}}'>
       <image class='voice-img' src='/images/play.png'></image>
-      <view class='voice-word'>不知道有多少久诶...</view>
+      <view class='voice-word'>不知道有久诶...</view>
 
       </view>
     </view>

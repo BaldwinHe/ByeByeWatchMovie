@@ -23,8 +23,6 @@ Page({
       movie:JSON.parse(options.movie)
     })
     this.getCommentList(this.data.movieID)
-    console.log(this.data.commentList)
-    console.log(this.data.commentList)
   },
 
   getCommentList(id) {
@@ -46,7 +44,6 @@ Page({
               }
             } else {
               let voice = wx.createInnerAudioContext()
-              console.log(nowcomment)
               voice.src = nowcomment.content;
 
               nowcomment.movie_id = Math.floor(voice.duration);
@@ -56,7 +53,6 @@ Page({
           this.setData({
             commentList: newcomment
           })
-          console.log(this.data.commentList)
         }
       },
     })

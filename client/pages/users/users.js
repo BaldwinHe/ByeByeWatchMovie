@@ -48,7 +48,6 @@ Page({
         wx.hideLoading()
 
         let data = result.data
-        console.log(data.data.length)
         for (let i = 0; i < data.data.length;i++){
           data.data[i].comment = JSON.parse(data.data[i].comment)
           data.data[i].movie = JSON.parse(data.data[i].movie)
@@ -60,7 +59,6 @@ Page({
           }
         }
         if (!data.code) {
-          console.log(data)
           this.setData({
             detail: tempArray,
             movie: data.data

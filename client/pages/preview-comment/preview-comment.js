@@ -65,7 +65,6 @@ Page({
   sendComment(){
     if (this.data.operation == 1){
       this.upLoadVoice( content =>{
-        console.log(content)
         wx.showLoading({
           title: '正在发表影评'
         })
@@ -117,7 +116,7 @@ Page({
         login: true,
         method: 'PUT',
         data: {
-          type: this.data.operation,
+          Type: this.data.operation,
           content: this.data.comment,
           movie_id: this.data.movie.id
         },
