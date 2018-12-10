@@ -1,6 +1,6 @@
 <!--pages/list-comment/list-comment.wxml-->
 
-<view class='the-movie-comment'>
+<scroll-view class='the-movie-comment' scroll-y='{{true}}'>
   <view class='comment-block' wx:for="{{commentList}}" data-idx="{{index}}" bindtap='getCommentDetail' data-id="{{item}}">
     <view class='user-comment'>
       <view class='about-user'>
@@ -8,10 +8,14 @@
         <view class='user-name'>{{item.username}}</view>
       </view>
       <view class='user-commentdetail' wx:if='{{item.types == 0}}'>{{item.content}}</view>
-      <button bindtap='playRecord' wx:if= '{{item.types == 1}}'  data-path="{{items.content}}">播放录音</button>
+      <view class='voice-button' wx:if= '{{item.types == 1}}'>
+      <image class='voice-img' src='/images/play.png'></image>
+      <view class='voice-word'>不知道有多少久诶...</view>
+
+      </view>
     </view>
   </view>
-</view>
+</scroll-view>
 
 <view class='connect-block'>
   <view class='connect-item'>

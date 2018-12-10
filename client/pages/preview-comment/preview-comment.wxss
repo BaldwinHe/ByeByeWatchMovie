@@ -11,7 +11,19 @@ background: #E8ECEF;
   top: 40rpx;
   left: 240rpx;
 }
-
+.voice-img{
+  opacity: 0.7;
+  height: 200rpx;
+  width: 200rpx;
+}
+.playButton{
+  background:none;
+  position:absolute;
+  margin-top:180rpx;
+}
+.playButton::after{
+  border: none;
+}
 .movie-detail-block{
   z-index: 1;
   position: relative;

@@ -8,6 +8,9 @@ const UNAUTHORIZED = 1
 const AUTHORIZED = 2
 
 App({
+  "window": {
+    "enablePullDownRefresh": true
+  },
   onLaunch: function () {
       qcloud.setLoginUrl(config.service.loginUrl)
   },

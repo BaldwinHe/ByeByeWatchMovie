@@ -6,6 +6,7 @@ background: #E8ECEF;
 .the-movie-comment{
   position: absolute;
   top: 50rpx;
+  height: 84%;
 }
 .comment-block{
   background: white;
@@ -28,6 +29,34 @@ background: #E8ECEF;
   bottom:40rpx;
   font-size: 30rpx;
 }
+.voice-button {
+  position:absolute;
+  left:70rpx;
+  bottom:25rpx;
+  font-size:30rpx;
+  width:380rpx;
+  height:60rpx;
+  border-radius:10rpx;
+  display: flex;
+  border-width: 3rpx 3rpx 3rpx 3rpx;
+  justify-content: center;
+  border-color: #E5E5E5;
+  border-style: solid;
+  align-items:center;
+}
+
+.voice-img{
+  opacity: 0.7;
+  height: 45rpx;
+  width: 45rpx;
+}
+
+.voice-word{
+  margin-left: 15rpx;
+  font-size: 30rpx;
+  opacity: 0.8;
+}
+
 .user-head{
   width: 80rpx;
   height: 80rpx;
@@ -47,7 +76,7 @@ background: #E8ECEF;
   background: white;
   padding-right: 300rpx;
   bottom: 0;
-  height: 120rpx;
+  height: 10%;
   display: flex;
   border-top: 4rpx solid rgba(151, 151, 151, 0.3);
 }

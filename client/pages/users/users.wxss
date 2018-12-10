@@ -23,6 +23,7 @@ background: #E8ECEF;
 }
 
 .my-love-movie{
+  height:800rpx;
   position: absolute;
   top: 250rpx;
 }
@@ -41,6 +42,28 @@ background: #E8ECEF;
   top: 0;
   width: 220rpx;
   height: 292rpx;
+}
+.voice{
+  position: absolute;
+  left: 250rpx;
+  bottom:124rpx;
+  font-size:32rpx;
+  display:flex;
+  align-items:center;
+
+}
+.voice-img{
+  width:60rpx;
+  height:60rpx;
+  opacity:0.7;
+  margin-right:20rpx;
+}
+.word{
+  position: absolute;
+  left: 250rpx;
+  bottom:135rpx;
+  font-size:32rpx;
+
 }
 .recommender{
   position: absolute;
@@ -73,7 +96,7 @@ background: #E8ECEF;
   background: white;
   padding-right: 300rpx;
   bottom: 0;
-  height: 120rpx;
+  height: 10%;
   display: flex;
   border-top: 4rpx solid rgba(151, 151, 151, 0.3);
 }

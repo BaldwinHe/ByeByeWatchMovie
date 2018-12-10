@@ -44,6 +44,12 @@ Page({
               if (nowcomment.content.length > 20) {
                 nowcomment.content = nowcomment.content.substring(0, 20) + '...';
               }
+            } else {
+              let voice = wx.createInnerAudioContext()
+              console.log(nowcomment)
+              voice.src = nowcomment.content;
+
+              nowcomment.movie_id = Math.floor(voice.duration);
             }
             newcomment[i] = nowcomment;
           }
@@ -54,13 +60,6 @@ Page({
         }
       },
     })
-  },
-
-  playRecord: function (event) {
-    let source = event.currentTarget.dataset.path
-    this.innerAudioContext = wx.createInnerAudioContext()
-    this.innerAudioContext.src = source
-    this.innerAudioContext.play()
   },
 
   getCommentDetail: function (event) {

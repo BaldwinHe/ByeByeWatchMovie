@@ -14,7 +14,9 @@
     <view class='comment-word'>{{comment}}</view>
   </scroll-view>   
 
-  <button bindtap='playRecord' wx:if= "{{operation == 1}}">播放录音</button>
+  <button class='playButton' bindtap='playRecord' wx:if= "{{operation == 1}}">
+    <image class='voice-img' src='/images/play.png'></image>
+  </button>
   <view class='write-comment' bindtap='sendComment'>
     <image class='connect-img' src='/images/send.png'></image>
     <view class='connect-word'>发布影评</view>

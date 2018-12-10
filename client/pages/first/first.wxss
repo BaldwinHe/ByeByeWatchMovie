@@ -51,7 +51,7 @@ background: #E8ECEF;
   background: white;
   padding-right: 136rpx;
   bottom: 0;
-  height: 120rpx;
+  height: 10%;
   display: flex;
   border-top: 4rpx solid rgba(151, 151, 151, 0.3);
 }

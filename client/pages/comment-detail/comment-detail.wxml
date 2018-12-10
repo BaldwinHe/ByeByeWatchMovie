@@ -14,7 +14,9 @@
     <view class='comment-word'>{{commentword}}</view>
   </scroll-view>   
 
-  <button bindtap='playRecord' wx:if= "{{comment.types == 1}}">播放录音</button>
+  <button class='playButton' bindtap='playRecord' wx:if= "{{comment.types == 1}}">
+    <image class='voice-img' src='/images/play.png'></image>
+  </button>
 
   <view class='write-comment' bindtap="openActionsheet">
     <image class='connect-img' src='/images/scroll.png'></image>

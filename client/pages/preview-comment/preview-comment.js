@@ -11,7 +11,8 @@ Page({
     userInfo:null,
     comment:'',
     images: ["a", "b", "c", "d", "e"],
-    operation:1
+    operation:1,
+    length:0
   },
 
   /**

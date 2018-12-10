@@ -11,7 +11,8 @@ Page({
   data: {
     userInfo: null,
     locationAuthType: app.data.locationAuthType,
-    movie: {}
+    movie: {},
+    detail:[]
   },
 
   onTapLogin() {
@@ -36,6 +37,7 @@ Page({
   },
 
   getMyLove: function(){
+    let tempArray = ""
     wx.showLoading({
       title: '获取影评收藏数据...',
     })
@@ -50,10 +52,17 @@ Page({
         for (let i = 0; i < data.data.length;i++){
           data.data[i].comment = JSON.parse(data.data[i].comment)
           data.data[i].movie = JSON.parse(data.data[i].movie)
+          tempArray = data.data[i].comment.content
+          if (data.data[i].comment.types == 0 && tempArray.length > 10){
+            data.data[i]["showOff"] = tempArray.substring(0,10) + "..."
+          }else{
+            data.data[i]["showOff"] = tempArray
+          }
         }
         if (!data.code) {
           console.log(data)
           this.setData({
+            detail: tempArray,
             movie: data.data
           })
         } else {
@@ -129,6 +138,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  getCommentDetail: function (event) {
+    let data = event.currentTarget.dataset.data;
+    let thing = data.comment;
+    let movieID = data.movie.id
+    let movie = data.movie
+    wx.navigateTo({
+      url: '/pages/comment-detail/comment-detail?thing=' + JSON.stringify(thing) + '&movie_id=' + movieID + '&movie=' + JSON.stringify(movie),
+    })
   },
 
   returnHomepage: function () {
