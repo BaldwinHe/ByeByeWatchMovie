@@ -1,19 +1,38 @@
 <!--pages/movie-detail/movie-detail.wxml-->
-<image class='movie-img' src="{{movie.image}}"></image>
-<view class='movie-detail-block'>
-  <view class='movie-name'>{{movie.title}}</view>
-  <scroll-view scroll-y='{{true}}' class = "scroll-block">
-    <view class='movie-detail'>{{movie.description}}</view>
-  </scroll-view>   
-
-  <view class='check-comment' bindtap="toCommentDetail">
-    <image class='comment-img' src='/images/find.png'></image>
-    <view class='comment-word'>查看影评</view>
+<view wx:if="{{!userInfo}}">
+  <view class="unlogin-card">
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后可查看收藏影评</view>
+    </view>
   </view>
+  <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
 
-  <view class='add-comment' bindtap="openActionsheet">
-    <image class='comment-img' src='/images/comment.png'></image>
-    <view class='comment-word'>添加影评</view>
+
+<view wx:else>
+  <image class='movie-img' src="{{movie.image}}"></image>
+  <view class='movie-detail-block'>
+    <view class='movie-name'>{{movie.title}}</view>
+    <scroll-view scroll-y='{{true}}' class = "scroll-block">
+      <view class='movie-detail'>{{movie.description}}</view>
+    </scroll-view>   
+
+    <view class='check-comment' bindtap="toCommentDetail">
+      <image class='comment-img' src='/images/find.png'></image>
+      <view class='comment-word'>查看影评</view>
+    </view>
+
+    <view class='add-comment' bindtap="openActionsheet" wx:if="{{hadComment == 0}}">
+      <image class='comment-img' src='/images/comment.png'></image>
+      <view class='comment-word'>添加影评</view>
+    </view>
+
+    <view class='add-comment' bindtap="getMyComment" wx:if="{{hadComment == 1}}">
+      <image class='comment-img' src='/images/comment.png'></image>
+      <view class='comment-word'>我的影评</view>
+    </view>
+
   </view>
-
 </view>

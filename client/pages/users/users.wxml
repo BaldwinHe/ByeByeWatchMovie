@@ -11,10 +11,12 @@
 </view>
 
 <view wx:else>
+
   <view class='my-love'>
     <text class='my-love-text'>俺收藏的影评</text>
     <image class='my-love-img' src='/images/download.png'></image>
   </view>
+
   <scroll-view class='my-love-movie' scroll-y='{{true}}'>
     <view class='movie-block' wx:for="{{movie}}" data-data="{{item}}" bindtap='getCommentDetail'>
       <image class='movie-img' src='{{item.movie.image}}'></image>
@@ -30,6 +32,28 @@
       </view>
     </view>
   </scroll-view>
+
+  <view class='my'>
+    <text class='my-love-text'>俺的影评</text>
+    <image class='my-love-img' src='/images/download.png'></image>
+  </view>
+
+  <scroll-view class='my-movie' scroll-y='{{true}}'>
+    <view class='movie-block' wx:for="{{mymovie}}" data-data="{{item}}" bindtap='getCommentDetail'>
+      <image class='movie-img' src='{{item.movie.image}}'></image>
+      <view class='movie-name'>{{item.movie.title}}</view>
+      <view wx:if='{{item.comment.types == 0}}' class='word'>{{item.showOff}}</view>
+      <view wx:if='{{item.comment.types == 1}}' class='voice'>
+        <image class='voice-img' src='/images/play.png'></image>
+        <view>点我来听影评呀</view>
+      </view>
+      <view class='recommender'>
+        <image class='user-head' src='{{item.comment.avatar}}'></image>
+        <view class='user-name'>{{item.comment.username}}</view>
+      </view>
+    </view>
+  </scroll-view>
+
   <view class='connect-block' bindtap='returnHomepage'>
     <view class='connect-item'>
       <text class='mini-text'>回到首页</text>

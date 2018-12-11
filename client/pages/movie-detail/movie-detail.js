@@ -3,7 +3,7 @@
 const qcloud = require('../../vendor/wafer2-client-sdk/index')
 const config = require('../../config')
 const _ = require('../../utils/util')
-
+const app = getApp()
 
 Page({
 
@@ -11,16 +11,74 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movie:{}
+    userInfo: null,
+    locationAuthType: app.data.locationAuthType,
+    movie:{},
+    hadComment: 0,
+    thisMovieID : 0,
+    commentInfo:{}
+  },
+
+  onTapLogin() {
+    app.login({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo,
+          locationAuthType: app.data.locationAuthType
+        })
+      },
+      error: () => {
+        this.setData({
+          locationAuthType: app.data.locationAuthType
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.getMovie(options.id);
-  },
 
+  onLoad: function (options) {
+    this.setData({
+      thisMovieID: options.id
+    })
+  },
+  getMyComment: function(){
+    let movieID = this.data.movie.id;
+    let movie = this.data.movie;
+    let thing = this.data.commentInfo;
+    wx.navigateTo({
+      url: '/pages/comment-detail/comment-detail?thing=' + JSON.stringify(thing) + '&movie_id=' + movieID + '&movie=' + JSON.stringify(movie),
+    })
+  },
+  hadSeen(id) {
+    qcloud.request({
+      url: config.service.getCommentUserMovie + id,
+      login: true,
+      success: result => {
+        let data = result.data;
+        if (!data.code) {
+          if(data.data.length > 0){
+            this.setData({
+              hadComment: 1,
+              commentInfo: data.data[0]
+            })
+          }else{
+            this.setData({
+              hadComment: 0
+            })
+          }
+        } else {
+          console.log("Error!")
+        }
+      },
+      fail: result => {
+        console.log(result)
+        console.log("Error!")
+      }
+    })
+  },
   getMovie(id) {
     wx.showLoading({
       title: '电影数据加载中...',
@@ -85,7 +143,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      locationAuthType: app.data.locationAuthType
+    })
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+        this.getMovie(this.data.thisMovieID);
+        this.hadSeen(this.data.thisMovieID);  
+      },
+      fail: function(){
+        
+      }
+    })  
   },
 
   /**

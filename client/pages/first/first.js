@@ -9,7 +9,8 @@ Page({
    */
   data: {
     commentInfo:{},
-    movieData: {}
+    movieData: {},
+    flag:0
   },
 
   /**
@@ -41,13 +42,24 @@ Page({
       success: result => {
         wx.hideLoading()
         if (!result.data.code) {
-          temp = result.data.data
-          let num = this.randInt(0, temp.length-1)
-          select = temp[num];
-          this.setData({
-            commentInfo: select
-          })
-          this.getMovie(select.movie_id)
+          if (result.data.data.length > 0){
+            this.setData({
+              flag: 0
+            })
+            temp = result.data.data
+            let num = this.randInt(0, temp.length-1)
+            select = temp[num];
+            this.setData({
+              commentInfo: select
+            })
+            this.getMovie(select.movie_id)
+          }else{
+            this.setData({
+              flag:1
+            })
+            let id = this.randInt(0, 12)
+            this.getMovie(id)
+          }
         } else {
           wx.showToast({
             title: '首页加载失败!',

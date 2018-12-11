@@ -44,6 +44,11 @@ var config = {
         addCollect: `${host}/weapp/collect`,
 
         getCollect: `${host}/weapp/collect`,
+
+        getCommentUser: `${host}/weapp/mycomment`,
+
+        getCommentUserMovie: `${host}/weapp/mycomment/`,
+
     }
 };
 

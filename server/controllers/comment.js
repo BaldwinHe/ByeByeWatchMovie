@@ -50,4 +50,15 @@ module.exports = {
       ctx.state.data = []
     }
   },
+
+  myComment: async ctx => {
+    let user = ctx.state.$wxInfo.userinfo.openId
+    ctx.state.data = await DB.query("SELECT * FROM comment where comment.user = ?", [user])
+  },
+
+  myCommentWithMovie: async ctx => {
+    let user = ctx.state.$wxInfo.userinfo.openId
+    let movieID = + ctx.params.id;
+    ctx.state.data = await DB.query("SELECT * FROM comment where comment.user = ?  AND comment.movie_id = ?", [user,movieID])
+  },
 }

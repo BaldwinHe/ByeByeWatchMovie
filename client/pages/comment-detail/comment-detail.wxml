@@ -1,31 +1,56 @@
 <!--pages/movie-detail/movie-detail.wxml-->
-<image class='movie-img' src="{{movie.image}}"></image>
-<view class='movie-detail-block'>
-  <view class='movie-name'>{{movie.title}}</view>
-
-  <view class='user-comment'>
-    <image class='user-head-image' src='{{userheadimg}}'></image>
-    <view class='user-word'>{{username}}的影评</view>
+<view wx:if="{{!userInfo}}">
+  <view class="unlogin-card">
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后可查看收藏影评</view>
+    </view>
   </view>
+  <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
 
-  <image class='right-arrow' src='/images/finger-of-a-hand-pointing-to-right-direction.png'></image>
 
-  <scroll-view scroll-y='{{true}}' class = "scroll-block" wx:if= "{{comment.types == 0}}">
-    <view class='comment-word'>{{commentword}}</view>
-  </scroll-view>   
+<view wx:else>
+  <image class='movie-img' src="{{movie.image}}"></image>
+  <view class='movie-detail-block'>
+    <view class='movie-name'>{{movie.title}}</view>
 
-  <button class='playButton' bindtap='playRecord' wx:if= "{{comment.types == 1}}">
-    <image class='voice-img' src='/images/play.png'></image>
-  </button>
+    <view class='user-comment'>
+      <image class='user-head-image' src='{{userheadimg}}'></image>
+      <view class='user-word'>{{username}}的影评</view>
+    </view>
 
-  <view class='write-comment' bindtap="openActionsheet">
-    <image class='connect-img' src='/images/scroll.png'></image>
-    <view class='connect-word'>写影评</view>
+    <image class='right-arrow' src='/images/finger-of-a-hand-pointing-to-right-direction.png'></image>
+
+    <scroll-view scroll-y='{{true}}' class = "scroll-block" wx:if= "{{comment.types == 0}}">
+      <view class='comment-word'>{{commentword}}</view>
+    </scroll-view>   
+
+    <button class='playButton' bindtap='playRecord' wx:if= "{{comment.types == 1}}">
+      <image class='voice-img' src='/images/play.png'></image>
+    </button>
+
+    <view class='write-comment' bindtap="openActionsheet" wx:if="{{hadComment == 0}}">
+      <image class='connect-img' src='/images/scroll.png'></image>
+      <view class='connect-word'>写影评</view>
+    </view>
+    
+    <view class='write-comment' bindtap="getMyComment" wx:if="{{hadComment == 1 && isMine == 0}}">
+      <image class='connect-img' src='/images/find-my-friend.png'></image>
+      <view class='connect-word'>我的影评</view>
+    </view>
+
+    <view class='write-comment' bindtap="returnHomepage" wx:if="{{hadComment == 1 && isMine == 1}}">
+      <image class='connect-img' src='/images/neighborhood.png'></image>
+      <view class='connect-word'>回到主页</view>
+    </view>
+
+
+    <view class='collect-comment' bindtap="addCollectMovie">
+      <image class='connect-img' src='/images/fireworks.png'></image>
+      <view class='connect-word'>收藏影评</view>
+    </view>
+
   </view>
-
-  <view class='collect-comment' bindtap="addCollectMovie">
-    <image class='connect-img' src='/images/fireworks.png'></image>
-    <view class='connect-word'>收藏影评</view>
-  </view>
-
 </view>

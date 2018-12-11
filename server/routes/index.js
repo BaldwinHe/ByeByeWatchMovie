@@ -45,6 +45,11 @@ router.get('/comment/:id', controllers.comment.movieList)
 // 获取全部电影影评列表
 router.get('/comment', controllers.comment.getList)
 
+
+router.get('/mycomment', validationMiddleware, controllers.comment.myComment)
+
+router.get('/mycomment/:id', validationMiddleware, controllers.comment.myCommentWithMovie)
+
 //添加收藏电影
 router.put('/collect', validationMiddleware, controllers.collect.add)
 
