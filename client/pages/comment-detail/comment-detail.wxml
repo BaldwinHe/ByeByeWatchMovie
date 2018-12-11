@@ -47,9 +47,14 @@
     </view>
 
 
-    <view class='collect-comment' bindtap="addCollectMovie">
+    <view class='collect-comment' bindtap="addCollectMovie" wx:if="{{isLike == 0}}">
       <image class='connect-img' src='/images/fireworks.png'></image>
       <view class='connect-word'>收藏影评</view>
+    </view>
+
+    <view class='collect-comment' bindtap="deleteCollectMovie" wx:if="{{isLike == 1}}">
+      <image class='connect-img' src='/images/dislike.png'></image>
+      <view class='connect-word'>取消收藏</view>
     </view>
 
   </view>

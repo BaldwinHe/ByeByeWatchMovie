@@ -49,6 +49,10 @@ var config = {
 
         getCommentUserMovie: `${host}/weapp/mycomment/`,
 
+        dislikeCollect: `${host}/weapp/collect`,
+
+        getIsLike: `${host}/weapp/islike`,
+
     }
 };
 

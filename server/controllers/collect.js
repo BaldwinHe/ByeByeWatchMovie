@@ -28,4 +28,27 @@ module.exports = {
     ctx.state.data = await DB.query("SELECT * FROM collect where collect.user = ?", [user])
 
   },
+
+  isLike: async ctx => {
+    let user = ctx.state.$wxInfo.userinfo.openId
+    let movieData = ctx.request.body.moviedata || null
+    let commentData = ctx.request.body.commentdata || null
+
+    let list = await DB.query('SELECT * FROM collect WHERE collect.movie = ? AND collect.comment = ? AND collect.user = ?', [movieData, commentData, user])
+
+    if (!list.length) {
+      ctx.state.data = 0
+    } else {
+      ctx.state.data = 1
+    }
+  },
+
+  dislike: async ctx => {
+    let user = ctx.state.$wxInfo.userinfo.openId
+    let movieData = ctx.request.body.moviedata || null
+    let commentData = ctx.request.body.commentdata || null
+
+    await DB.query('DELETE FROM collect WHERE collect.movie = ? AND collect.comment = ? AND collect.user = ?', [movieData, commentData, user])
+
+  },
 }

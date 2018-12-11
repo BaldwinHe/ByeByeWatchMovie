@@ -50,10 +50,14 @@ router.get('/mycomment', validationMiddleware, controllers.comment.myComment)
 
 router.get('/mycomment/:id', validationMiddleware, controllers.comment.myCommentWithMovie)
 
+router.get('/islike', validationMiddleware, controllers.collect.isLike)
+
 //添加收藏电影
 router.put('/collect', validationMiddleware, controllers.collect.add)
 
 //获取收藏电影
 router.get('/collect', validationMiddleware, controllers.collect.list)
 
+//取消收藏
+router.post('/collect', validationMiddleware, controllers.collect.dislike)
 module.exports = router

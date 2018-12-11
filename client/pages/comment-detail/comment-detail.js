@@ -20,7 +20,8 @@ Page({
     userheadimg: '/images/head-img.png',
     commentword: '索尔：嗨，大家好，我是雷神索尔，上一集中我没了锤子还没了右眼，那还玩个锤子？所以这一集中我改用斧子了。虽然我遭受的创伤是所有人中最多的，但是放心吧，我可是男主角，哦不，我是说放心吧我可是一个神，所以我不会这么轻易地狗带的。抱歉各位，最后一斧子没劈到灭霸的头，让他打了个响指，但我真的已经尽力了。',
     hadComment: 0,
-    isMine: 0
+    isMine: 0,
+    isLike: 1,
   },
 
   returnHomepage: function () {
@@ -47,6 +48,32 @@ Page({
       this.innerAudioContext = wx.createInnerAudioContext()
       this.innerAudioContext.src = this.data.comment.content
     }
+    this.isLike();
+  },
+  isLike: function(){
+    qcloud.request({
+      url: config.service.getIsLike,
+      login: true,
+      data: {
+        moviedata: JSON.stringify(this.data.movie),
+        commentdata: JSON.stringify(this.data.comment)
+      },
+      success: result => {
+        let data = result.data;
+        console.log(result)
+        if (!data.code) {
+          this.setData({
+            isLike: data.data
+          })
+        } else {
+          console.log("Error!")
+        }
+      },
+      fail: result => {
+        console.log(result)
+        console.log("Error!")
+      }
+    })
   },
   openActionsheet: function () {
     let movie = this.data.movie
@@ -84,16 +111,12 @@ Page({
         wx.hideLoading()
         let data = result.data
         if (!data.code) {
-          if(data.data){
-            wx.showToast({
-              title: '该影评已收藏过'
-            })
-          }
-          else{
-              wx.showToast({
-              title: '该影评成功收藏'
-            })
-          }
+          this.setData({
+            isLike: 1
+          })
+          wx.showToast({
+            title: '该影评成功收藏'
+          })
         } else {
           wx.showToast({
             icon: 'none',
@@ -111,6 +134,47 @@ Page({
     })
   },
 
+  deleteCollectMovie: function(){
+    wx.showLoading({
+      title: '正在取消收藏...',
+    })
+    qcloud.request({
+      url: config.service.dislikeCollect,
+      method: 'POST',
+      login: true,
+      data: {
+        moviedata: JSON.stringify(this.data.movie),
+        commentdata: JSON.stringify(this.data.comment)
+      },
+      success: result => {
+        wx.hideLoading()
+
+        let data = result.data
+        console.log(result)
+        if (!data.code) {
+          this.setData({
+            isLike: 0
+          })
+          wx.showToast({
+            title: '成功取消收藏'
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '取消收藏失败'
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+
+        wx.showToast({
+          icon: 'none',
+          title: '取消收藏失败'
+        })
+      }
+    })
+  },
   playRecord: function () {
     console.log(this.innerAudioContext)
     this.innerAudioContext.play()
