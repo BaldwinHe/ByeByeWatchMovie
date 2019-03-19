@@ -3,16 +3,16 @@ const CONF = {
     rootPathname: '',
 
     // 微信小程序 App ID
-    appId: 'wx0d95fae6dfff8729',
+    appId: '',
 
     // 微信小程序 App Secret
-    appSecret: '59cfdffe3a4a20457945903073b339ef',
+    appSecret: '',
 
-    qcloudAppId: '1257919653',
+    qcloudAppId: '',
 
-    qcloudSecretId: 'AKIDwqggXBGgWR315DDCfWEqJj2HzZHwxsgR',
+    qcloudSecretId: '',
 
-    qcloudSecretKey: 'xz2wgKozndM0VuibQ6nU4Wo150MtNOQT',
+    qcloudSecretKey: '',
     
     // 是否使用腾讯云代理登录小程序
     useQcloudLogin: false,
